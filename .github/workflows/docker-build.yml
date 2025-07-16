@@ -22,12 +22,6 @@ jobs:
     - name: Echo Docker contexts
       run: docker context ls
 
-    - name: Find buildx path
-      run: (Get-Command docker-buildx).Source
-
-    - name: Set Docker context to desktop-linux
-      run: docker context use desktop-linux
-
     - name: Run main.Go
       run: go run ./main.go
  
