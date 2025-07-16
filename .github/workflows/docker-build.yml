@@ -13,13 +13,22 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Set up Docker Buildx
-      # This action creates and boots a BuildKit-enabled builder instance.
-      # It's essential for enabling BuildKit features.
-      uses: docker/setup-buildx-action@v3
+    - name: Install latest Docker
+      run: |
+        choco install docker-desktop --pre --confirm
+        Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+        Start-Sleep -Seconds 30
+
+    - name: Echo Docker contexts
+      run: docker context ls
+
+    - name: Find buildx path
+      run: (Get-Command docker-buildx).Source
 
     - name: Set Docker context to desktop-linux
       run: docker context use desktop-linux
 
     - name: Run main.Go
       run: go run ./main.go
+      env:
+      DOCKER_CONTEXT: desktop-linux
