@@ -13,6 +13,11 @@ jobs:
     steps:
     - name: Install winget
       uses: Cyberboss/install-winget@v1
-    
     - name: Install wingetcreate
       run: winget install Docker.DockerDesktop GoLang.Go --silent --accept-package-agreements --accept-source-agreements
+      
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run main.Go
+      run: go run ./main.go
