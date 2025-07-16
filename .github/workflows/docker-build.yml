@@ -11,8 +11,8 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      -
-        name: Set up Docker
-        uses: docker/setup-docker-action@v4
-      
-      
+    - name: Install winget
+      uses: Cyberboss/install-winget@v1
+    
+    - name: Install wingetcreate
+      run: winget install Docker.DockerDesktop GoLang.Go --silent --accept-package-agreements --accept-source-agreements
