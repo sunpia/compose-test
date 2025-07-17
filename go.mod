@@ -5,7 +5,7 @@ go 1.24.5
 require (
 	github.com/compose-spec/compose-go/v2 v2.7.1
 	github.com/docker/cli v28.3.2+incompatible
-	github.com/docker/compose/v2 v2.38.2
+	github.com/docker/compose/v2 v2.38.1
 )
 
 require (
